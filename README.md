@@ -65,3 +65,62 @@ E.g. https://developers.google.com/chart/interactive/docs/gallery/scatterchart
 
 
 You should feel comfortable exploring each of the components that RakanNimer has defined, and see how the props he allows get passed to the Google Charts library.
+
+
+
+
+
+
+
+<!-- import React from 'react';
+import { render } from 'react-dom';
+import { Chart } from 'react-google-charts';
+
+class BarChartExample extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      data: {}
+    }
+  }
+
+  componentDidMount(){
+    fetch("/api/v1/students")
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({ data: body.data });
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+  render() {
+
+    return (
+      <div className={'my-pretty-chart-container'}>
+        <div>
+          <h2> Below is an example Bar Chart</h2>
+          <Chart
+            chartType="BarChart"
+            data={}
+            options={{}}
+            graph_id="BarChart"
+            width="100%"
+            height="400px"
+            legend_toggle
+          />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default BarChartExample -->

@@ -4,6 +4,7 @@ import { Chart } from 'react-google-charts';
 
 import ScatterChartExample from './ScatterChartExample'
 import LineChartExample from './LineChartExample'
+import TestChart from './TestChart'
 import WordTreeExample from './WordTreeExample'
 
 
@@ -13,6 +14,7 @@ class ChartsContainer extends React.Component {
       <div className={'my-pretty-chart-container'}>
         <h1> GoogleCharts Examples </h1>
         <div>
+          <TestChart />
           <LineChartExample />
           <ScatterChartExample />
           <WordTreeExample />
