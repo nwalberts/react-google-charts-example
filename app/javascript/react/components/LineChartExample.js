@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Chart } from 'react-google-charts';
 
+
 class LineChartExample extends React.Component {
   render() {
 
@@ -20,6 +21,7 @@ class LineChartExample extends React.Component {
       <div className={'my-pretty-chart-container'}>
         <div>
           <h2> Below is an example Line Chart</h2>
+
           <Chart
             chartType="LineChart"
             data={data}
@@ -27,8 +29,8 @@ class LineChartExample extends React.Component {
             graph_id="LineChart"
             width="100%"
             height="400px"
-            legend_toggle
           />
+          
         </div>
       </div>
     );

@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import GoogleCharts from '../react/components/ChartsContainer'
+import ChartsContainer from '../react/components/ChartsContainer'
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (reactElement) {
     ReactDOM.render(
-      <GoogleCharts />,
+      <ChartsContainer />,
       reactElement
     )
   }
