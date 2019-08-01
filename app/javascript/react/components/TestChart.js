@@ -2,15 +2,28 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Chart } from 'react-google-charts';
 
+const blandData = [
+      ['Cohort Number', 'Awesomeness', 'Stress Levels'],
+      ['53',  1000,      500],
+      ['54',  1000,      500],
+      ['55',  1000,      500],
+      ['56',  1000,      500],
+      ['57',  1000,      500],
+      ['58',  1000,      500],
+      ['59',  1000,      500]
+    ]
+
+
 class TestChart extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       data: []
     }
+    this.getStudents = this.getStudents.bind(this)
   }
 
-  componentDidMount(){
+  getStudents(){
     fetch("api/v1/students")
     .then(response => {
       if (response.ok) {
@@ -28,26 +41,45 @@ class TestChart extends React.Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  componentDidMount(){
+    this.getStudents()
+  }
+
+  toggleAwesomeness(){
+    if (this.state.data !== blandData ) {
+      this.setState({data: blandData})
+    } else {
+      getStudents()
+    }
+  }
+
   render() {
-    let data = this.state.data
-    // let data = [
-    //   ['Cohort Number', 'Awesomeness', 'Stress Levels'],
-    //   ['53',  1000,      400],
-    //   ['54',  1170,      460],
-    //   ['55',  660,       1120],
-    //   ['56',  1201,      602],
-    //   ['57',  1250,      650],
-    //   ['58',  1500,      630],
-    //   ['59',  1030,      800]
-    // ]
-    debugger;
+    const chartEvents = [
+      {
+        eventName: "select",
+        callback({ chartWrapper }) {
+          let chart = chartWrapper.getChart()
+          let selectedItem = chart.getSelection()
+          console.log("Selected ", selectedItem);
+        }
+      }
+      // {
+      //   eventName: "select",
+      //   callback({ chartWrapper }) {
+      //     debugger
+      //     this.toggleAwesomeness
+      //   }
+      // }
+    ];
+
     return (
       <div className={'my-pretty-chart-container'}>
         <div>
           <h2> Below is an example Test Chart</h2>
           <Chart
             chartType="BarChart"
-            data={data}
+            data={this.state.data}
+            chartEvents={chartEvents}
           />
         </div>
       </div>
@@ -56,10 +88,3 @@ class TestChart extends React.Component {
 }
 
 export default TestChart
-
-// [
-//   ["Students", "Snarkiness", "Relaxation"],
-//   [5, 20, 11],
-//   [3, 2, 24],
-//   [7, 14, 18]
-// ]

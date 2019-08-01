@@ -5,10 +5,11 @@ import { Chart } from 'react-google-charts';
 class WordTreeExample extends React.Component {
   render() {
 
-    let data =  [  ['phrase', 'size', 'value'],
-            ['poros are better than dogs', 1, 8],
-            ['poros eat kibble', 1, 5],
-          ]
+    const data =  [
+      ['phrase', 'size', 'value'],
+      ['poros are better than dogs', 1, 8],
+      ['poros eat kibble', 1, 5],
+    ]
 
     return (
       <div className={'my-pretty-chart-container'}>
